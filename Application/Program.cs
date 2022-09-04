@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PipeRoutingGA
+namespace Application
 {
     class Program
     {
