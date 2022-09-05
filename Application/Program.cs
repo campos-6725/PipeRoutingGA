@@ -1,4 +1,7 @@
 ﻿using System;
+using Autofac;
+using Definitions;
+using EntitiesInterfaces;
 
 namespace Application
 {
@@ -6,7 +9,16 @@ namespace Application
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            var container = ContainerConfig.Configure();
+
+            using (var programScope = container.BeginLifetimeScope())
+            {
+                var driver = programScope.Resolve<IDriver>();
+
+                Result result = driver.Execute();
+            }
+
         }
     }
 }
