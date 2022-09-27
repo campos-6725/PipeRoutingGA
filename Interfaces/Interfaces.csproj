@@ -9,4 +9,10 @@
     <PackageReference Include="GeneticSharp" Version="2.6.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Definitions\Definitions.csproj" />
+    <ProjectReference Include="..\EntitiesInterfaces\EntitiesInterfaces.csproj" />
+    <ProjectReference Include="..\Entities\Entities.csproj" />
+  </ItemGroup>
+
 </Project>
