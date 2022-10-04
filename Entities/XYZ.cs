@@ -42,5 +42,9 @@ namespace Entities
             string str = "(" + X + "," + Y + "," + Z + ")";
             return str;
         }
+
+        public static XYZ operator -(XYZ a, XYZ b) => new XYZ(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+        public static XYZ operator +(XYZ a, XYZ b) => new XYZ(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+
     }
 }

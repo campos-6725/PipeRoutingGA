@@ -17,10 +17,19 @@ namespace Services
         }
 
         public List<Node> Ler(List<Face> faces)
-        {
+        {                     
+
 
             foreach(Face face in faces)
             {
+                // OBTER RETAS DE CONTORNO DA FACE
+
+                foreach (var line in face.ContourLines)
+                {
+                    //obter lista de pontos de interesse para a linha (extremidades  )
+                    //checar para cada reta se existem pontos terminais em outras faces adjacentes a ela
+
+                }
 
             }
             
