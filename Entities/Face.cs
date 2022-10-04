@@ -9,6 +9,8 @@ namespace Entities
         public XYZ Min { get; set; }
         public XYZ Max { get; set; }
         public List<Line> ContourLines { get; set; }
+        public List<TerminalPoint> TerminalPoints { get; set; }
+
 
         public Face(XYZ min, XYZ max)
         {

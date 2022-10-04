@@ -7,11 +7,11 @@ namespace Entities
     public class Line
     {
 
-        XYZ StartPoint { get; set; }
-        XYZ EndPoint { get; set; }
-        XYZ Direction { get; set; }
+        public XYZ StartPoint { get; set; }
+        public XYZ EndPoint { get; set; }
+        public XYZ Direction { get; set; }
 
-        public   Line(XYZ startPoint, XYZ endPoint)
+        public Line(XYZ startPoint, XYZ endPoint)
         {
             StartPoint = startPoint;
             EndPoint = endPoint;

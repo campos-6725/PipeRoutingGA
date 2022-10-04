@@ -15,5 +15,14 @@ namespace Entities
         }
 
 
+        public static XYZ DotProduct()
+        {
+
+        }
+
+        public static XYZ GetProjectedPointOnLine(this XYZ point,Line line)
+        {
+
+        }
     }
 }

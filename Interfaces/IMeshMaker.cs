@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Interfaces
 {
-    public interface ILeitorDeEspacos
+    public interface IMeshMaker
     {
         List<Node> Ler(List<Face> paredes);
     }
