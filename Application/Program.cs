@@ -9,6 +9,7 @@ namespace Application
     {
         static void Main(string[] args)
         {
+            
 
             var container = ContainerConfig.Configure();
 

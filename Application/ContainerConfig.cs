@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Autofac;
+using EntitiesInterfaces;
 
 namespace Application
 {
@@ -11,6 +12,8 @@ namespace Application
         internal static IContainer Configure()
         {
             var builder = new ContainerBuilder();
+
+            builder.RegisterType<Driver>().As<IDriver>();
 
             //declarar implementacoes aqui
 

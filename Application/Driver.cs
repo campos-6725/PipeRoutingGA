@@ -18,6 +18,8 @@ namespace Application
         public Result Execute()
         {
 
+            Console.WriteLine("vc vai fazer dar certo");
+
             // faz leitura do espaco e obtem malha
 
             // cria individuos iniciais
