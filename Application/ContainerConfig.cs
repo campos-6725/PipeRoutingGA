@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using Autofac;
+using Entities;
 using EntitiesInterfaces;
+using QuikGraph;
+using Services;
 
 namespace Application
 {
@@ -13,11 +16,13 @@ namespace Application
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<Driver>().As<IDriver>();
+            builder.RegisterType<Driver>()
+                .As<IDriver>();
 
             //declarar implementacoes aqui
 
-
+            builder.RegisterType<GraphRepository>()
+                .As<IRepository<BidirectionalGraph<Node, Edge>>>();
 
 
 

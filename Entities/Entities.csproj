@@ -7,6 +7,12 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.4.0" />
     <PackageReference Include="GeneticSharp" Version="2.6.0" />
+    <PackageReference Include="QuikGraph" Version="2.5.0" />
+    <PackageReference Include="QuikGraph.Serialization" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Definitions\Definitions.csproj" />
   </ItemGroup>
 
 </Project>

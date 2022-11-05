@@ -15,34 +15,41 @@ namespace Entities
             return new XYZ(xyz.X / distance, xyz.Y / distance, xyz.Z / distance);
         }
 
+        public static double DistanceTo(this XYZ source, XYZ target)
+        => Math.Sqrt(
+            (source.X - target.X) * (source.X - target.X) + 
+            (source.Y - target.Y) * (source.Y - target.Y) + 
+            (source.Z - target.Z) * (source.Z - target.Z));
 
-        public static XYZ DotProduct()
+        public static XYZ CrossProduct(this XYZ a,  XYZ b)
         {
+            new XYZ(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
+
             throw new NotImplementedException();
         }
 
         public static XYZ GetProjectedPointOnLine(this XYZ point, Line line)
         {
             XYZ p0 = line.StartPoint;
-            XYZ p1 = line.EndPoint;     
+            XYZ p1 = line.EndPoint;
 
-            if (point.X == p1.X && p0.Y == p1.Y && p0.Z == p1.Z) p0.X -= 0.00001;         
+            if (point.X == p1.X && p0.Y == p1.Y && p0.Z == p1.Z) p0.X -= 0.00001;
 
-            double Unumer = 
-                ((point.X - p0.X) * (p1.X - p0.X)) + 
-                ((point.Y - p0.Y) * (p1.Y - p0.Y)) + 
+            double Unumer =
+                ((point.X - p0.X) * (p1.X - p0.X)) +
+                ((point.Y - p0.Y) * (p1.Y - p0.Y)) +
                 ((point.Z - p0.Z) * (p1.Z - p0.Z));
 
-            double Udenom = 
-                Math.Pow(p1.X - p0.X, 2) + 
-                Math.Pow(p1.Y - p0.Y, 2)+
+            double Udenom =
+                Math.Pow(p1.X - p0.X, 2) +
+                Math.Pow(p1.Y - p0.Y, 2) +
                 Math.Pow(p1.Z - p0.Z, 2);
 
             double U = Unumer / Udenom;
 
             XYZ r = new XYZ(
                 p0.X + (U * (p1.X - p0.X)),
-                p0.Y + (U * (p1.Y - p0.Y)), 
+                p0.Y + (U * (p1.Y - p0.Y)),
                 p0.Z + (U * (p1.Z - p0.Z)));
 
             double minx = Math.Min(p0.X, p1.X);
@@ -56,6 +63,20 @@ namespace Entities
 
             return isValid ? r : null;
 
+        }
+
+        public static XYZ SameDirection(this XYZ a, XYZ b, double tolerance)
+        {
+            var distvec = a.Normalize() - b.Normalize();
+
+            if (distvec.X <= tolerance || distvec.Y <= tolerance || distvec.Z <= tolerance)
+                return true;
+
+        }
+
+        public static Face ToNewFace(this Face face)
+        {
+            return new Face(face.Min, face.Max, face.Normal, face.TerminalPoints);
         }
     }
 }

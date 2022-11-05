@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Entities;
 using Interfaces;
+using QuikGraph;
 
 namespace Services
 {
@@ -11,16 +12,22 @@ namespace Services
     {
         private List<Node> _nodes;
         private INodeFactory _nodeFactory;
+        private IBiderectionalGraphCreator biderectionalGraphCreator;
         private List<Face> _faces;
-        MeshMakerFromRoom(INodeFactory nodeFactory)
+        MeshMakerFromRoom(INodeFactory nodeFactory, IBiderectionalGraphCreator biderectionalGraphCreator)
         {
             _nodeFactory = nodeFactory;
             _nodes = new List<Node>();
         }
 
-        public List<Node> Ler(List<Face> faces)
+        public BidirectionalGraph<Node, Edge> Make(List<Face> faces)
         {
             _faces = faces;
+
+            //pegar faces que tem normal na mesma direção
+            //para cada direção de normal
+                //calcular pontos de interesse na horizontal e na vertical
+                //dado espaço de criação 
 
             foreach (Face face in faces)
             {                

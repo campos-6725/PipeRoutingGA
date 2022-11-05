@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using QuikGraph;
 
 namespace Entities
 {
-    public class Node
+    public class Node 
     {
 
         public XYZ Coordinate { get; set; }
