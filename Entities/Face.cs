@@ -16,6 +16,8 @@ namespace Entities
         public List<TerminalPoint> TerminalPoints { get; set; }
         public FaceType Type { get; set; }
 
+        public XYZ SideDirection { get; set; }
+
 
         public Face(XYZ min, XYZ max, XYZ normal)
         {
@@ -23,6 +25,9 @@ namespace Entities
             Max = max;
             Normal = normal;
             ContourLines = GetContourLinesFromExtremities(min, max);
+            SetFaceType(normal);
+            SideDirection = (max.setZ(min.Z) - min).Normalize();
+
         }
 
         public Face(XYZ min, XYZ max, XYZ normal, List<TerminalPoint> terminalPoints)
@@ -32,9 +37,11 @@ namespace Entities
             Normal = normal;
             ContourLines = GetContourLinesFromExtremities(min, max);
             TerminalPoints = terminalPoints;
+            SetFaceType(normal);
+            SideDirection = (max.setZ(min.Z) - min).Normalize();
         }
 
-        
+
 
         private List<Line> GetContourLinesFromExtremities(XYZ min, XYZ max)
         {
@@ -92,7 +99,12 @@ namespace Entities
 
         private void SetFaceType(XYZ normal)
         {
-            if(normal.)
+            if (normal.Equals(XYZ.BasisZ))
+                Type = FaceType.floor;
+            else if (normal.Equals(-XYZ.BasisZ))
+                Type = FaceType.ceiling;
+            else
+                Type = FaceType.floor;
         }
     }
 }

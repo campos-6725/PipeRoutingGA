@@ -47,10 +47,27 @@ namespace Entities
             return str;
         }
 
+        public override bool  Equals(Object other)
+        {
+            if (other == null)
+                return false;
+            return this.Equals( other as XYZ);
+        }
+
         public bool Equals(XYZ other)
         {
             return X == other.X && Y == other.Y && Z == other.Z;                    
         }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -307843816;
+            hashCode = hashCode * -1521134295 + X.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y.GetHashCode();
+            hashCode = hashCode * -1521134295 + Z.GetHashCode();
+            return hashCode;
+        }
+
         public static bool operator ==(XYZ a, XYZ b)
         {
             if (a.X == b.X && a.Y == b.Y && a.Z == b.Z)

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Services
+namespace Services.Interfaces
 {
     public interface IBiderectionalGraphCreator
     {

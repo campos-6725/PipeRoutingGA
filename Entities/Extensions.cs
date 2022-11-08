@@ -17,15 +17,20 @@ namespace Entities
 
         public static double DistanceTo(this XYZ source, XYZ target)
         => Math.Sqrt(
-            (source.X - target.X) * (source.X - target.X) + 
-            (source.Y - target.Y) * (source.Y - target.Y) + 
+            (source.X - target.X) * (source.X - target.X) +
+            (source.Y - target.Y) * (source.Y - target.Y) +
             (source.Z - target.Z) * (source.Z - target.Z));
 
-        public static XYZ CrossProduct(this XYZ a,  XYZ b)
+        public static XYZ CrossProduct(this XYZ a, XYZ b)
         {
             new XYZ(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
 
             throw new NotImplementedException();
+        }
+
+        public static double DotProduct (this XYZ a, XYZ b)
+        {
+            return a.X * b.X + a.Y * b.Y + a.Z *b.Z;
         }
 
         public static XYZ GetProjectedPointOnLine(this XYZ point, Line line)
@@ -65,13 +70,11 @@ namespace Entities
 
         }
 
-        public static XYZ SameDirection(this XYZ a, XYZ b, double tolerance)
+        public static bool IsSameDirection(this XYZ a, XYZ b)
         {
-            var distvec = a.Normalize() - b.Normalize();
-
-            if (distvec.X <= tolerance || distvec.Y <= tolerance || distvec.Z <= tolerance)
+            if (a.Normalize().Equals(b.Normalize()) || a.Normalize().Equals(-b.Normalize()))
                 return true;
-
+            return false;
         }
 
         public static Face ToNewFace(this Face face)

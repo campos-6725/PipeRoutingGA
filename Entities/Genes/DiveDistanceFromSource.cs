@@ -13,5 +13,17 @@ namespace Entities.Genes
         {
             PointDistanceFromStartPointInMainWall = pointDistanceFromStartPointInMainWall;
         }
+
+        public XYZ GetDivePointOnFloor()
+        {
+            var min = base.SourceFace.Min.setZ(0);
+            var max = base.SourceFace.Max.setZ(0);
+
+            var direction = (max - min).Normalize();
+
+            return min + direction * PointDistanceFromStartPointInMainWall;
+        }
+
+
     }
 }
